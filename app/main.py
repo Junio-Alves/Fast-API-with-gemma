@@ -12,3 +12,9 @@ async def generate(request: GenerateRequest):
         do_sample=request.do_sample
     )
     return {"response": result}
+
+
+@app.get("/")
+async def root():
+    """Simple root endpoint for health check / basic info."""
+    return {"status": "ok", "message": "Gemma API running"}

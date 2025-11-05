@@ -10,17 +10,11 @@ RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
 # Criar diretório de trabalho
 WORKDIR /app
 
-# Copiar os arquivos de dependências
-COPY requirements.txt .
+# Clonar o repositório
+RUN git clone https://github.com/Junio-Alves/Fast-API-with-gemma.git .
 
 # Instalar dependências do Python
 RUN pip install --no-cache-dir -r requirements.txt
-
-# Copiar o restante do projeto
-COPY . .
-
-# Carregar variáveis de ambiente automaticamente (opcional)
-# ou usar --env-file no docker run
 
 # Expor a porta da API
 EXPOSE 8000
